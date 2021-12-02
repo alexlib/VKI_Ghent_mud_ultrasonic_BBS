@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 18 16:42:13 2019
+# we updated this code to 0.23.8 version
+# use pip:
 
-@author: Theo
-"""
+#       pip install openpiv --upgrade
 
 # add two directories that include the new files
 # note that we need to import openpiv in a separate, original namespace
@@ -15,13 +13,12 @@ Density= "145"#116, 145 or 172
 Freq = "45" #two digit number without decimal --> fc x 10 (e.g. 7.5MHz becomes 75)
 FR = "90" # frame rate
 
-from OpenPIV_windef_func import PIV_windef
+from openpiv import windef
+
 #import time
 
-class Settings(object):
-    pass  
 #start_time = time.time()
-settings = Settings()
+settings = windef.Settings()
 
 
 Base_folder="C:/Scans UZL/tests at home_rev2_(raw_imgs)/new_images_35_phased_array/"
