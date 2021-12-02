@@ -13,7 +13,8 @@ Density= "145"#116, 145 or 172
 Freq = "45" #two digit number without decimal --> fc x 10 (e.g. 7.5MHz becomes 75)
 FR = "90" # frame rate
 
-from openpiv import windef
+# from openpiv import windef
+import custom_windef as windef
 
 #import time
 
@@ -23,11 +24,12 @@ settings = windef.Settings()
 
 Base_folder = '.'
 # Folder with the images to process
-#settings.filepath_images = './Pre_Pro_PIV_IMAGES2/'
-settings.filepath_images = Base_folder + "/Set 1_Linear_5MHz"
+
+# settings.filepath_images = Base_folder + "/Set 1_Linear_5MHz"
+settings.filepath_images = Base_folder + "/Set2_Phased_3.5MHz"
 
 # Folder for the outputs
-settings.save_path = 'Results_Set_1_Linear_5MHz_'
+settings.save_path = 'Results_Set2_Phased_3.5MHz'
 # Root name of the output Folder for Result Files
 settings.save_folder_suffix = 'Test_1'
 # Format and Image Sequence
@@ -62,7 +64,7 @@ settings.overlap = (40, 20, 10) # This is 50% overlap
 # methode used for subpixel interpolation: 'gaussian','centroid','parabolic'
 settings.subpixel_method = 'gaussian'
 # order of the image interpolation for the window deformation
-settings.interpolation_order = 3
+settings.interpolation_order = 1
 settings.scaling_factor = 10  # scaling factor pixel/millimeter !!!!!!!!!!!!!!! see TSC course video 01:00:05
 settings.dt = 1/496.27791563272973  # time between to frames (in seconds)!!!!!!!!!!!!!!!!!!!!!!!! see TSC course video 01:00:05
 'Signal to noise ratio options (only for the last pass)'
@@ -135,6 +137,8 @@ for i in range(1, 11):
 
 windef.piv(settings)
 
+# Alex reproduced
+# (my>ky) failed for hidden my: regrid_smth:my=2
 
 # # Test for Manuel
 # import numpy as np
